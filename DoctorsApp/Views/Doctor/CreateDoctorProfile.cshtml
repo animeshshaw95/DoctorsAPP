@@ -1,0 +1,265 @@
+﻿@model CORE.DATAMODEL.DoctorInsertModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>CreateDoctorProfile</title>
+</head>
+<body>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    @using (Html.BeginForm("CreateDoctorProfile", "Doctor", FormMethod.Post))
+    {
+        <div class="page-wrapper">
+            <div class="row">
+                <input type="hidden" value="@TempData["IsError"]" id="IsError" />
+                <input type="hidden" value="@TempData["Message"]" id="Message" />
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="col-lg-12">
+                    <div class="panel panel-default color-panel">
+                        <div class="panel-heading">
+                            <label class="control-label">Doctor Profile</label>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-5 col-xs-12">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body color-panel-body">
+                                            <div class="container-fluid">
+                                                <div class="form-horizontal">
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <div class="col-lg-4 col-sm-4">
+                                                                <label class="control-label astrisk"> First Name</label>
+                                                            </div>
+
+                                                            <div class="col-lg-8 col-sm-12">
+                                                                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control", @required = "required", @placeholder = "First Name" } })
+                                                                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "alert-danger" })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <div class="col-lg-4 col-sm-4">
+                                                                Email
+                                                            </div>
+
+                                                            <div class="col-lg-8 col-sm-12">
+                                                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @required = "required", @placeholder = "Email" } })
+                                                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "alert-danger" })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <div class="col-lg-4 col-sm-4">
+                                                                Address
+                                                            </div>
+                                                            <div class="col-lg-8 col-sm-12">
+                                                                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", @required = "required", @placeholder = "Address" } })
+                                                                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "alert-danger" })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <div class="col-lg-4 col-sm-4">
+                                                                Specialization
+                                                            </div>
+                                                            <div class="col-lg-8 col-sm-12">
+                                                                @Html.DropDownListFor(model => model.DoctorTypes, new SelectList(Model.DoctorTypeList, "Value", "Name"), "--Select--", htmlAttributes: new { @class = "form-control", @multiple = "true" })
+                                                                @Html.ValidationMessageFor(model => model.DoctorTypes, "", new { @class = "alert-danger" })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <div class="col-lg-4 col-sm-4">
+                                                                Pincode
+                                                            </div>
+                                                            <div class="col-lg-8 col-sm-12">
+                                                                @Html.EditorFor(model => model.Pincode, new { htmlAttributes = new { @class = "form-control", @required = "required", @placeholder = "Pincode" } })
+                                                                @Html.ValidationMessageFor(model => model.Pincode, "", new { @class = "alert-danger" })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-5 col-xs-12">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body color-panel-body">
+                                            <div class="container-fluid">
+                                                <div class="form-horizontal">
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <div class="col-lg-4 col-sm-4">
+                                                                Last Name
+                                                            </div>
+                                                            <div class="col-lg-8 col-sm-12">
+                                                                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control", @required = "required", @placeholder = "Last Name" } })
+                                                                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "alert-danger" })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <div class="col-lg-4 col-sm-4">
+                                                                Phone Number
+                                                            </div>
+                                                            <div class="col-lg-8 col-sm-12">
+                                                                @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control", @required = "required", @placeholder = "PhoneNumber" } })
+                                                                @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "alert-danger" })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <div class="col-lg-4 col-sm-4">
+                                                                Country
+                                                            </div>
+                                                            <div class="col-lg-8 col-sm-12">
+                                                                @Html.EditorFor(model => model.Country, new { htmlAttributes = new { @class = "form-control", @required = "required", @placeholder = "Country" } })
+                                                                @Html.ValidationMessageFor(model => model.Country, "", new { @class = "alert-danger" })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <div class="col-lg-4 col-sm-4">
+                                                                State
+                                                            </div>
+                                                            <div class="col-lg-8 col-sm-12">
+                                                                @Html.EditorFor(model => model.State, new { htmlAttributes = new { @class = "form-control", @required = "required", @placeholder = "State" } })
+                                                                @Html.ValidationMessageFor(model => model.State, "", new { @class = "alert-danger" })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <div class="col-lg-4 col-sm-4">
+                                                                Password
+                                                            </div>
+                                                            <div class="col-lg-8 col-sm-12">
+                                                                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @required = "required", @placeholder = "Password" } })
+                                                                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "alert-danger" })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 col-xs-12">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body color-panel-body">
+                                            <div class="container-fluid">
+                                                <div class="form-horizontal">
+                                                </div><div class="panel panel-default">
+                                                    <div class="panel-body color-panel-body">
+                                                        <div class="container-fluid">
+                                                            <div class="form-horizontal">
+                                                                <div class="form-group">
+                                                                    <div class="row">
+                                                                        <div style="height:120px;width:100px;">
+                                                                            <img src="~/Content/Images/no-image.png" id="img" style="height:120px;width:100px;"/>
+                                                                            <span id="imgError"></span>
+                                                                        </div>
+                                                                        
+                                                                        <div class="btn btn-group  pull-right" style="padding-left:0px;padding-right:0px;width:100%;">
+                                                                            <a href="#" class="btn btn-outline btn-cusDefault1" id="upload" style="width:50px;padding-left:0px;padding-right:0px;"><span><i class="fa fa-upload"></i></span></a>
+                                                                            <a href="#" class="btn btn-outline btn-cusDefault1" id="remove"><span><i class="fa fa-trash"></i></span></a>
+                                                                        </div>
+                                                                        <input type="file" id="File" name="File" accept="image/*" onchange="loadImageFileAsURL();" style="display:block;"/>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row"></div>
+                        <div class="panel-footer color-panel-body">
+                            <button id="submit" type="submit" class="btn btn-outline btn-cusDefault"><i class="fa fa-fw fa-floppy-o" aria-hidden="true"></i>Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</body>
+</html>
+<script>
+    var DomainName = ('https:' == document.location.protocol ? 'https://' : 'http://') + window.document.location.host.toString();
+    $(document).ready(function () {
+        if ($('#IsError').val() == 'true') {
+            alert($('#Message').val());
+        }
+        else if ($('#IsError').val() == 'false') {
+            alert("Registration Successfull");
+        }
+        $('#upload').click(function myfunction() {
+            $('#File').click();
+        });
+        $("#remove").click(function (e) {
+
+            $('img').attr('src', '/Content/Images/no-image.png');
+
+        });
+    });
+    function loadImageFileAsURL()
+    {
+        var filesSelected = document.getElementById("File").files;
+        if (filesSelected.length > 0) {
+            var fileToLoad = filesSelected[0];
+
+            var size = filesSelected[0].size;
+
+            document.getElementById('imgError').innerHTML = '';
+            if (size > 204800) {
+
+                document.getElementById('imgError').innerHTML = '<p><font style="color: #A94442">Your file should be less than 200 kb!</font></p>'
+                return false;
+            }
+
+            else {
+
+                var fileReader = new FileReader();
+              
+                fileReader.onload = function (fileLoadedEvent) {
+
+                    document.getElementById("img").src = fileLoadedEvent.target.result;
+                };
+
+                fileReader.readAsDataURL(fileToLoad);
+            }
+
+
+        }
+    }
+</script>

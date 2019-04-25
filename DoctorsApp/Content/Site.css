@@ -1,0 +1,69 @@
+﻿.page-wrapper {
+    transition-timing-function: linear;
+    transition: 1.1s;
+    margin: 0px;
+    font-family: "Roboto", Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 30px;
+    color: #777;
+    
+}
+
+.container-fluid {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.control-label {
+    white-space: nowrap;
+    padding-left: 0px !important;
+}
+
+.astrisk::before {
+    color: #a94442;
+    content: "*";
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.panel-default {
+    border-color: #ddd;
+    padding-top: 5px;
+}
+
+.color-panel-body {
+    background-color: #e8f8fd;
+    padding: 15px;
+}
+
+.color-panel > .panel-heading {
+    background-color: #00AFF0;
+    border-color: #00AFF0;
+    color: #fff;
+    padding-left: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-weight: bold;
+    font-size: 30px;
+    font-family: "Roboto", Helvetica, Arial, sans-serif;
+    line-height: 30px;
+}
+
+.row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: 0px;
+    margin-left: 0px;
+}
+/*input:-ms-input-placeholder {
+  color: red;
+}*/
+.form-control {
+    font-size: 12px !important;
+}
+
