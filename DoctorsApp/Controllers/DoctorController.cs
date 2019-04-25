@@ -36,7 +36,7 @@ namespace DoctorsApp.Controllers
             model.DoctorTypeList = _RS.GetDoctorTypes().ToList();
             if (!ModelState.IsValid)
             {
-                TempData["Message"] = "Verification failed";
+                TempData["Message"] = "Verification failed!";
                 TempData["IsError"] = "true";
             }
 
