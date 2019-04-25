@@ -1,0 +1,11 @@
+c:\users\animesh\documents\visual studio 2015\Projects\DoctorsApp\DEPENDANCYRESOLVER\bin\Debug\DEPENDANCYRESOLVER.dll
+c:\users\animesh\documents\visual studio 2015\Projects\DoctorsApp\DEPENDANCYRESOLVER\bin\Debug\DEPENDANCYRESOLVER.pdb
+c:\users\animesh\documents\visual studio 2015\Projects\DoctorsApp\DEPENDANCYRESOLVER\bin\Debug\CORE.dll
+c:\users\animesh\documents\visual studio 2015\Projects\DoctorsApp\DEPENDANCYRESOLVER\bin\Debug\DATA.dll
+c:\users\animesh\documents\visual studio 2015\Projects\DoctorsApp\DEPENDANCYRESOLVER\bin\Debug\Ninject.dll
+c:\users\animesh\documents\visual studio 2015\Projects\DoctorsApp\DEPENDANCYRESOLVER\bin\Debug\CORE.pdb
+c:\users\animesh\documents\visual studio 2015\Projects\DoctorsApp\DEPENDANCYRESOLVER\bin\Debug\DATA.pdb
+c:\users\animesh\documents\visual studio 2015\Projects\DoctorsApp\DEPENDANCYRESOLVER\bin\Debug\Ninject.xml
+c:\users\animesh\documents\visual studio 2015\Projects\DoctorsApp\DEPENDANCYRESOLVER\obj\Debug\DEPENDANCYRESOLVER.csprojResolveAssemblyReference.cache
+c:\users\animesh\documents\visual studio 2015\Projects\DoctorsApp\DEPENDANCYRESOLVER\obj\Debug\DEPENDANCYRESOLVER.dll
+c:\users\animesh\documents\visual studio 2015\Projects\DoctorsApp\DEPENDANCYRESOLVER\obj\Debug\DEPENDANCYRESOLVER.pdb

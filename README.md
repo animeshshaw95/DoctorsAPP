@@ -1,2 +1,0 @@
-# DoctorsAPP
-DoctorsAPP
