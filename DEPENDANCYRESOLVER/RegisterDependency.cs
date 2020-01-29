@@ -21,6 +21,12 @@ namespace DEPENDANCYRESOLVER
 
             kernel.Bind<IDoctorRegistrationServices>()
                      .To<DoctorRegistrationServices>().InSingletonScope();
+            kernel.Bind<IPayment>()
+                     .To<StripePayment>().InSingletonScope();
+            kernel.Bind<IPayment>()
+                     .To<AdyenPayment>().InSingletonScope();
+            kernel.Bind<IPaymentStrategy>()
+                     .To<PaymentStrategy>().WithConstructorArgument("payments", new IPayment[] { new StripePayment(),new AdyenPayment()});
 
         }
     }

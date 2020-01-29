@@ -12,11 +12,13 @@ namespace DoctorsApp.Controllers
     {
         #region Global Variable
         private readonly IDoctorRegistrationServices _RS;
+        private readonly IPaymentStrategy _Payments;
         #endregion
         #region CTOR
-        public DoctorController(IDoctorRegistrationServices RS)
+        public DoctorController(IDoctorRegistrationServices RS,IPaymentStrategy Payments)
         {
             _RS = RS;
+            _Payments = Payments;
         }
         #endregion
         // GET: Doctor
@@ -26,6 +28,7 @@ namespace DoctorsApp.Controllers
         }
         public ActionResult CreateDoctorProfile()
         {
+            IPayment payment = _Payments.GetPayment(DATA.CODE.GlobalConstants.PaymentClass);
             DoctorInsertModel model = new DoctorInsertModel();
             model.DoctorTypeList = _RS.GetDoctorTypes().ToList();
             return View(model);

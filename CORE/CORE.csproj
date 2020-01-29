@@ -43,6 +43,8 @@
   <ItemGroup>
     <Compile Include="CODE\IDoctorRegistrationServices.cs" />
     <Compile Include="CODE\IGlobal.cs" />
+    <Compile Include="CODE\IPayment.cs" />
+    <Compile Include="CODE\IPaymentStrategy.cs" />
     <Compile Include="DATAMODEL\AddUpdateDataModel.cs" />
     <Compile Include="DATAMODEL\DoctorModel.cs" />
     <Compile Include="DATAMODEL\NameValue.cs" />
