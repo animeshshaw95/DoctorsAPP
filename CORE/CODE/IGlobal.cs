@@ -10,5 +10,7 @@ namespace CORE.CODE
     {
         String ConnectionString();
         Int32 DefaultPageListSize();
+
+        Dictionary<string, string> GetAllConfigs();
     }
 }

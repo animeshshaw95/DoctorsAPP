@@ -11,10 +11,12 @@ namespace DATA.CODE
     {
         private readonly String _connectionstring;
         private readonly Int32 _defaultpagelistsize;
-        public Global(String connectionstring, Int32 defaultpagelistsize)
+        private readonly Dictionary<string, string> _globalConfig;
+        public Global(String connectionstring, Int32 defaultpagelistsize,Dictionary<string,string> globalConfig)
         {
             _connectionstring = connectionstring;
             _defaultpagelistsize = defaultpagelistsize;
+            _globalConfig = globalConfig;
         }
         public String ConnectionString()
         {
@@ -23,6 +25,10 @@ namespace DATA.CODE
         public Int32 DefaultPageListSize()
         {
             return _defaultpagelistsize;
+        }
+        public Dictionary<string, string> GetAllConfigs()
+        {
+            return _globalConfig;
         }
     }
 }

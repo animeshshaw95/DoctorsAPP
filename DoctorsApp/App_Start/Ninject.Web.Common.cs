@@ -13,6 +13,8 @@ namespace DoctorsApp.App_Start
     using Ninject.Web.Common.WebHost;
     using DATA.CODE;
     using DEPENDANCYRESOLVER;
+    using System.Collections.Generic;
+    using System.Configuration;
 
     public static class NinjectWebCommon 
     {
@@ -63,7 +65,18 @@ namespace DoctorsApp.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            RegisterDependency.RegisterDependencies(kernel, GlobalConstants.DBConn, GlobalConstants.DefaultPageListSize);
+            RegisterDependency.RegisterDependencies(kernel, GlobalConstants.DBConn, GlobalConstants.DefaultPageListSize, GetAllConfigs());
         }        
+        private static Dictionary<string,string> GetAllConfigs()
+        {
+            Dictionary<string, string> _configs = new Dictionary<string, string>();
+            _configs.Add("PaymentClass", GlobalConstants.GetConfigVal("PaymentClass"));
+            _configs.Add("StripeMode", GlobalConstants.GetConfigVal("StripeMode"));
+            _configs.Add("StripeSecretKeyTest", GlobalConstants.GetConfigVal("StripeSecretKeyTest"));
+            _configs.Add("StripeSecretKeyProduction", GlobalConstants.GetConfigVal("StripeSecretKeyProduction"));
+            return _configs;
+        }
+       
+
     }
 }

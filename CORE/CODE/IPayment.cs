@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CORE.DATAMODEL.Payment;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,5 +11,6 @@ namespace CORE.CODE
     {
         void Capture();
         bool ApplyTo(string className);
+        AuthoriseResponse Authorise(AuthoriseRequest request);
     }
 }

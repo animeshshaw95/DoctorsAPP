@@ -12,7 +12,11 @@ namespace DATA.CODE
         private static String Conn = ConfigurationManager.AppSettings["DBConn"];
         public static String DBConn = ConfigurationManager.ConnectionStrings["DBConn"].ConnectionString;
         public static Int32 DefaultPageListSize = Convert.ToInt32(ConfigurationManager.AppSettings["DefaultPageListSize"]);
-        public static String PaymentClass = Convert.ToString(ConfigurationManager.AppSettings["PaymentClass"]);
-
+        public static string GetConfigVal(string Key)
+        {
+            string _val = "";
+            _val = Convert.ToString(ConfigurationManager.AppSettings[Key]);
+            return _val;
+        }
     }
 }

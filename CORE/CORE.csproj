@@ -48,6 +48,9 @@
     <Compile Include="DATAMODEL\AddUpdateDataModel.cs" />
     <Compile Include="DATAMODEL\DoctorModel.cs" />
     <Compile Include="DATAMODEL\NameValue.cs" />
+    <Compile Include="DATAMODEL\Payment\AuthoriseRequest.cs" />
+    <Compile Include="DATAMODEL\Payment\AuthoriseResponse.cs" />
+    <Compile Include="DATAMODEL\Payment\Card.cs" />
     <Compile Include="DATAMODEL\SystemEnums.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
