@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
@@ -41,12 +42,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CODE\ICommonServices.cs" />
     <Compile Include="CODE\IDoctorRegistrationServices.cs" />
     <Compile Include="CODE\IGlobal.cs" />
     <Compile Include="CODE\IPayment.cs" />
     <Compile Include="CODE\IPaymentStrategy.cs" />
+    <Compile Include="CODE\Registration\Doctor\IDoctorServices.cs" />
     <Compile Include="DATAMODEL\AddUpdateDataModel.cs" />
+    <Compile Include="DATAMODEL\CommonServices.cs" />
     <Compile Include="DATAMODEL\DoctorModel.cs" />
+    <Compile Include="DATAMODEL\LoginRequest.cs" />
     <Compile Include="DATAMODEL\NameValue.cs" />
     <Compile Include="DATAMODEL\Payment\AuthoriseRequest.cs" />
     <Compile Include="DATAMODEL\Payment\AuthoriseResponse.cs" />
@@ -54,7 +59,9 @@
     <Compile Include="DATAMODEL\SystemEnums.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="DATAMODEL\Common\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

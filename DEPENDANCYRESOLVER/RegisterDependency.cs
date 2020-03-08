@@ -1,5 +1,7 @@
 ﻿using CORE.CODE;
+using CORE.CODE.Registration.Doctor;
 using DATA.CODE;
+using DATA.CODE.Registration.Doctor;
 using Ninject;
 using System;
 using System.Collections.Generic;
@@ -28,6 +30,8 @@ namespace DEPENDANCYRESOLVER
                      .To<AdyenPayment>().InSingletonScope();
             kernel.Bind<IPaymentStrategy>()
                      .To<PaymentStrategy>().WithConstructorArgument("payments", kernel.GetAll<IPayment>().ToArray());
+            kernel.Bind<IDoctorServices>()
+                     .To<DoctorServices>().InSingletonScope();
 
         }
     }
