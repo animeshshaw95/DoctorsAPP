@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CODE\AdyenPayment.cs" />
+    <Compile Include="CODE\CommonServices.cs" />
     <Compile Include="CODE\DoctorRegistrationServices.cs" />
     <Compile Include="CODE\Global.cs" />
     <Compile Include="CODE\GlobalConstants.cs" />
@@ -58,6 +59,7 @@
     <Compile Include="CODE\Registration\Doctor\DoctorServices.cs" />
     <Compile Include="CODE\StripePayment.cs" />
     <Compile Include="DATACONNECTION\DataConnection.cs" />
+    <Compile Include="DBACCESSMODEL\CommonDBAccessModel.cs" />
     <Compile Include="DBACCESSMODEL\DoctorsDBAccessModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

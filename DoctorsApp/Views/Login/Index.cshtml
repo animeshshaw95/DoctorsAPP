@@ -9,7 +9,7 @@
 <div class="container body-content wrapper fadeInDown">
     <div id="formContent">
 
-        @using (Html.BeginForm("Index", "Login", FormMethod.Post, new { htmlAttributes = new { @autocomplete = "off" }, @id = "Login" }))
+        @using (Html.BeginForm("Index", "Login", FormMethod.Post, new { htmlAttributes = new { @autocomplete = "off" }, @id = "frmLogin" }))
         {
             <div class="form-horizontal">
                 <div class="fadeIn first">
@@ -45,7 +45,7 @@
                         @Html.CheckBoxFor(model => model.Rememberme) <span>Remember me</span>
                     </div>
                     <div class="col-md-6" style="float:left">
-                        @Html.ActionLink("Register Here", "Index", "Home")
+                        @Html.ActionLink("Register Here", "Index", "Register")
                     </div>
                 </div>
                 <div class="row">

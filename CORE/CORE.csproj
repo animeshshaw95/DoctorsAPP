@@ -49,8 +49,12 @@
     <Compile Include="CODE\IPaymentStrategy.cs" />
     <Compile Include="CODE\Registration\Doctor\IDoctorServices.cs" />
     <Compile Include="DATAMODEL\AddUpdateDataModel.cs" />
-    <Compile Include="DATAMODEL\CommonServices.cs" />
+    <Compile Include="DATAMODEL\Common\City.cs" />
+    <Compile Include="DATAMODEL\Common\Specialization.cs" />
+    <Compile Include="DATAMODEL\Common\State.cs" />
     <Compile Include="DATAMODEL\DoctorModel.cs" />
+    <Compile Include="DATAMODEL\Doctor\DoctorRegistration.cs" />
+    <Compile Include="DATAMODEL\Enums\Enums.cs" />
     <Compile Include="DATAMODEL\LoginRequest.cs" />
     <Compile Include="DATAMODEL\NameValue.cs" />
     <Compile Include="DATAMODEL\Payment\AuthoriseRequest.cs" />
@@ -59,9 +63,7 @@
     <Compile Include="DATAMODEL\SystemEnums.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DATAMODEL\Common\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

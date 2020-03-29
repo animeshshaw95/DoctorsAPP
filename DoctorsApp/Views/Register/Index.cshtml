@@ -1,13 +1,191 @@
-﻿
-<!DOCTYPE html>
+﻿@model CORE.DATAMODEL.Doctor.DoctorRegistration
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-    <div> 
-    </div>
-</body>
-</html>
+@{
+    ViewBag.Title = "Registration";
+}
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+<script src="~/Scripts/js/BsMultiSelect.js"></script>
+<div class="container">
+    @using (Html.BeginForm("Index", "Register", FormMethod.Post, new { htmlAttributes = new { @autocomplete = "off" }, @id = "frmDoctorRegistration" }))
+    {
+        <h2>Registration</h2>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(x => x.FirstName, htmlAttributes: new { @class = "col-sm-3 control-label" })
+            <div class="col-sm-9">
+                @Html.EditorFor(x => x.FirstName, new { htmlAttributes = new { @class = "form-control", @placeholder = "First Name", @autofocus = "true" } })
+                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(x => x.LastName, htmlAttributes: new { @class = "col-sm-3 control-label" })
+            <div class="col-sm-9">
+                @Html.EditorFor(x => x.LastName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Last Name", @autofocus = "true" } })
+                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(x => x.Email, htmlAttributes: new { @class = "col-sm-3 control-label" })
+            <div class="col-sm-9">
+                @Html.EditorFor(x => x.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email", @autofocus = "true" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(x => x.Password, htmlAttributes: new { @class = "col-sm-3 control-label" })
+            <div class="col-sm-9">
+                @Html.EditorFor(x => x.Password, new { htmlAttributes = new { @class = "form-control", @placeholder = "Password", @autofocus = "true", @type = "Password" } })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(x => x.ConfirmPassword, htmlAttributes: new { @class = "col-sm-3 control-label" })
+            <div class="col-sm-9">
+                @Html.EditorFor(x => x.ConfirmPassword, new { htmlAttributes = new { @class = "form-control", @placeholder = "Confirm Password", @autofocus = "true", @type = "Password" } })
+                @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(x => x.DOB, htmlAttributes: new { @class = "col-sm-3 control-label" })
+            <div class="col-sm-9">
+                @Html.EditorFor(x => x.DOB, new { htmlAttributes = new { @class = "form-control", @autofocus = "true" } })
+                @Html.ValidationMessageFor(model => model.DOB, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(x => x.MobileNumber, htmlAttributes: new { @class = "col-sm-3 control-label" })
+            <div class="col-sm-9">
+                @Html.EditorFor(x => x.MobileNumber, new { htmlAttributes = new { @class = "form-control", @placeholder = "Mobile Number", @autofocus = "true" } })
+                @Html.ValidationMessageFor(model => model.MobileNumber, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.SpecialistIn, htmlAttributes: new { @class = "col-sm-3 control-label" })
+            <div class="col-sm-9">
+                @Html.DropDownListFor(x => x.SpecialistIn, new SelectList(Model.specializations, "ID", "Name"), new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.SpecialistIn, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.State, htmlAttributes: new { @class = "col-sm-3 control-label" })
+            <div class="col-sm-9">
+                @Html.DropDownListFor(x => x.State, new SelectList(Model.states, "state_code", "state_name"), "Select", new { @class = "form-control", @onchange = "Registration.getCities(this)" })
+                @Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.City, htmlAttributes: new { @class = "col-sm-3 control-label" })
+            <div class="col-sm-9">
+                @Html.DropDownListFor(x => x.City, new SelectList(Model.cities, "city_code", "city_name"), "Select", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.Gender, htmlAttributes: new { @class = "col-sm-3 control-label" })
+            <div class="col-sm-9">
+                <div class="row">
+                    <div class="col-sm-5">
+                        <label class="radio-inline">
+                            @Html.RadioButtonFor(x => x.Gender, "Female", new { htmlAttributes = new { @class = "form-control", @autofocus = "true" } })Female
+                        </label>
+                    </div>
+                    <div class="col-sm-4">
+                        <label class="radio-inline">
+                            @Html.RadioButtonFor(x => x.Gender, "Male", new { htmlAttributes = new { @class = "form-control", @autofocus = "true" } })Male
+                            @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <input type="submit" id="btnRegister" name="btnRegister" value="Register" class="btn btn-primary btn-block" />
+    }
+</div>
+<script>
+    $(document).ready(function () {
+        Registration.init();
+        Registration.initializeSelect();
+    });
+    var Registration = {
+        init: function () {
+            $('#DOB').datepicker({
+                format: "yy-mm-dd",
+                autoclose: true,
+                changeMonth: true,
+                changeYear: true
+            }).on('changeDate', function (ev) {
+                $(this).datepicker('hide');
+            });
+        },
+        initializeSelect: function () {
+            $('#SpecialistIn').bsMultiSelect({
+                //setSelected: null,
+                //required: true
+            });
+        },
+        getCities: function (e) {
+            var URL = '/Register/GetCities?StateCode=' + e.value;
+            $.ajax({
+                url: URL,
+                type: 'GET',
+                beforeSend: function () {
+                    //$('#loader').show()
+                },
+                success: function (data) {
+                    Registration.appendCityDropdown(data, 'City')
+                },
+                error: function (e) {
+                    alert(JSON.stringify(e))
+                },
+                complete: function () {
+                    //$('#loader').hide()
+                },
+            });
+        },
+        appendCityDropdown: function (data, id) {
+            let dropdown = $('#' + id);
+
+            dropdown.empty();
+
+            dropdown.append('<option selected="true" disabled>Select</option>');
+            dropdown.prop('selectedIndex', 0);
+            $.each(data, function (key, entry) {
+              dropdown.append($('<option></option>').attr('value', entry.city_code).text(entry.city_name));
+            })
+            
+        }
+    }
+</script>
+
+<style>
+    body {
+        background: url('https://static-communitytable.parade.com/wp-content/uploads/2014/03/rethink-target-heart-rate-number-ftr.jpg') fixed;
+        background-size: cover;
+    }
+
+    *[id="frmDoctorRegistration"] {
+        max-width: 530px;
+        padding: 15px;
+        margin: 0 auto;
+        border-radius: 0.3em;
+        background-color: #f2f2f2;
+    }
+
+        *[id="frmDoctorRegistration"] h2 {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 40px;
+            font-weight: 600;
+            color: #000000;
+            margin-top: 5%;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+        }
+</style>
