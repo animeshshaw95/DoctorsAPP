@@ -12,62 +12,62 @@
     @using (Html.BeginForm("Index", "Register", FormMethod.Post, new { htmlAttributes = new { @autocomplete = "off" }, @id = "frmDoctorRegistration" }))
     {
         <h2>Registration</h2>
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
         <div class="form-group">
             @Html.LabelFor(x => x.FirstName, htmlAttributes: new { @class = "col-sm-3 control-label" })
             <div class="col-sm-9">
                 @Html.EditorFor(x => x.FirstName, new { htmlAttributes = new { @class = "form-control", @placeholder = "First Name", @autofocus = "true" } })
-                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger", @id = "chkFirstName" })
             </div>
         </div>
         <div class="form-group">
             @Html.LabelFor(x => x.LastName, htmlAttributes: new { @class = "col-sm-3 control-label" })
             <div class="col-sm-9">
                 @Html.EditorFor(x => x.LastName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Last Name", @autofocus = "true" } })
-                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger", @id = "chkLastName" })
             </div>
         </div>
         <div class="form-group">
             @Html.LabelFor(x => x.Email, htmlAttributes: new { @class = "col-sm-3 control-label" })
             <div class="col-sm-9">
                 @Html.EditorFor(x => x.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email", @autofocus = "true" } })
-                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger", @id = "chkEmail" })
             </div>
         </div>
         <div class="form-group">
             @Html.LabelFor(x => x.Password, htmlAttributes: new { @class = "col-sm-3 control-label" })
             <div class="col-sm-9">
                 @Html.EditorFor(x => x.Password, new { htmlAttributes = new { @class = "form-control", @placeholder = "Password", @autofocus = "true", @type = "Password" } })
-                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger", @id = "chkPassword" })
             </div>
         </div>
         <div class="form-group">
             @Html.LabelFor(x => x.ConfirmPassword, htmlAttributes: new { @class = "col-sm-3 control-label" })
             <div class="col-sm-9">
                 @Html.EditorFor(x => x.ConfirmPassword, new { htmlAttributes = new { @class = "form-control", @placeholder = "Confirm Password", @autofocus = "true", @type = "Password" } })
-                @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger", @id = "chkConfirmPassword" })
             </div>
         </div>
         <div class="form-group">
             @Html.LabelFor(x => x.DOB, htmlAttributes: new { @class = "col-sm-3 control-label" })
             <div class="col-sm-9">
-                @Html.EditorFor(x => x.DOB, new { htmlAttributes = new { @class = "form-control", @autofocus = "true" } })
-                @Html.ValidationMessageFor(model => model.DOB, "", new { @class = "text-danger" })
+                @Html.EditorFor(x => x.DOB, new { htmlAttributes = new { @class = "form-control", @placeholder = "Select DOB", @autofocus = "true" } })
+                @Html.ValidationMessageFor(model => model.DOB, "", new { @class = "text-danger", @id = "chkDOB" })
             </div>
         </div>
         <div class="form-group">
             @Html.LabelFor(x => x.MobileNumber, htmlAttributes: new { @class = "col-sm-3 control-label" })
             <div class="col-sm-9">
                 @Html.EditorFor(x => x.MobileNumber, new { htmlAttributes = new { @class = "form-control", @placeholder = "Mobile Number", @autofocus = "true" } })
-                @Html.ValidationMessageFor(model => model.MobileNumber, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.MobileNumber, "", new { @class = "text-danger", @id = "chkMobileNumber" })
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(x => x.SpecialistIn, htmlAttributes: new { @class = "col-sm-3 control-label" })
             <div class="col-sm-9">
-                @Html.DropDownListFor(x => x.SpecialistIn, new SelectList(Model.specializations, "ID", "Name"), new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.SpecialistIn, "", new { @class = "text-danger" })
+                @Html.DropDownListFor(x => x.SpecialistIn, new SelectList(Model.specializations, "ID", "Name"), new { @class = "form-control", @multiple = "multiple" })
+                @Html.ValidationMessageFor(model => model.SpecialistIn, "", new { @class = "text-danger", @id = "chkSpecialistIn" })
             </div>
         </div>
 
@@ -75,7 +75,7 @@
             @Html.LabelFor(x => x.State, htmlAttributes: new { @class = "col-sm-3 control-label" })
             <div class="col-sm-9">
                 @Html.DropDownListFor(x => x.State, new SelectList(Model.states, "state_code", "state_name"), "Select", new { @class = "form-control", @onchange = "Registration.getCities(this)" })
-                @Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger", @id = "chkState" })
             </div>
         </div>
 
@@ -83,7 +83,7 @@
             @Html.LabelFor(x => x.City, htmlAttributes: new { @class = "col-sm-3 control-label" })
             <div class="col-sm-9">
                 @Html.DropDownListFor(x => x.City, new SelectList(Model.cities, "city_code", "city_name"), "Select", new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger", @id = "chkCity" })
             </div>
         </div>
 
@@ -99,7 +99,7 @@
                     <div class="col-sm-4">
                         <label class="radio-inline">
                             @Html.RadioButtonFor(x => x.Gender, "Male", new { htmlAttributes = new { @class = "form-control", @autofocus = "true" } })Male
-                            @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+                            @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger", @id = "chkGender" })
                         </label>
                     </div>
                 </div>
@@ -108,26 +108,144 @@
         <input type="submit" id="btnRegister" name="btnRegister" value="Register" class="btn btn-primary btn-block" />
     }
 </div>
-<script>
+<script type="text/javascript">
     $(document).ready(function () {
         Registration.init();
         Registration.initializeSelect();
+        $("#frmDoctorRegistration").validate({
+            rules: {
+                FirstName: {
+                    required: true
+                },
+                LastName: {
+                    required: true,
+                },
+                Email: {
+                    required: true,
+                    email: true
+                },
+                Password: {
+                    required: true,
+                    minlength: 5
+                },
+                ConfirmPassword: {
+                    required: true,
+                    equalTo: "#Password",
+                    minlength: 5
+                },
+                DOB: {
+                    required: true
+                },
+                MobileNumber: {
+                    required: true,
+                    maxlength: 10,
+                    minlength: 10
+                },
+                State: {
+                    required: true
+                },
+                City: {
+                    required: true
+                },
+                Gender: {
+                    required: true
+                }
+            },
+            messages: {
+                FirstName: {
+                    required: "Please enter your firstname"
+                },
+                LastName: {
+                    required: "Please enter your lastname"
+                },
+                Email: {
+                    required: "Please enter your email address",
+                    email: "Invalid email address"
+                },
+                Password: {
+                    required: "Please enter your password",
+                    minlength: "Length should be five characters"
+                },
+                ConfirmPassword: {
+                    required: "Please enter your confirm password",
+                    equalTo: "Does not matched with password",
+                    minlength: "Length should be five characters"
+                },
+                DOB: {
+                    required: "Please select your date of birth"
+                },
+                MobileNumber: {
+                    required: "Please enter your mobile number",
+                    maxlength: "Length should be ten characters",
+                    minlength: "Length should be ten characters"
+                },
+                State: {
+                    required: "Please select your state"
+                },
+                City: {
+                    required: "Please select your city"
+                },
+                Gender: {
+                    required: "Please select your gender"
+                }
+            },
+            errorElement: "span",
+            errorPlacement: function (error, element) {
+                // Add the `text-danger` class to the error element
+                error.addClass("text-danger");
+
+                if (element.prop("type") === "checkbox" || element.prop("type") === "radio") {
+                    error.insertAfter(element.parent("label"));
+                } else {
+                    error.insertAfter(element);
+                }
+            },
+            highlight: function (element, errorClass, validClass) {
+                $(element).parents(".col-sm-5").addClass("has-error").removeClass("has-success");
+            },
+            unhighlight: function (element, errorClass, validClass) {
+                $(element).parents(".col-sm-5").addClass("has-success").removeClass("has-error");
+            },
+            submitHandler: function (form) {
+                if (Registration.validateSpecialization()) {
+                    console.log(1);
+                    Registration.displayError('', "#chkSpecialistIn");
+                    console.log(2);
+                    form.submit();
+                    console.log(3);
+                }
+                else
+                    Registration.displayError('Please select atleast one specialization', "#chkSpecialistIn");
+                //console.log(1);
+                //form.submit();
+                //$("#frmDoctorRegistration").submit();
+
+            }
+        });
+        $("#SpecialistIn").on('change', function (e) {
+            if (Registration.validateSpecialization())
+                Registration.displayError('', "#chkSpecialistIn");
+            else
+                Registration.displayError('Please select atleast one specialization', "#chkSpecialistIn");
+        });
     });
+
     var Registration = {
         init: function () {
+            $('#DOB').val('');
             $('#DOB').datepicker({
-                format: "yy-mm-dd",
+                dateFormat: "yy-mm-dd",
                 autoclose: true,
                 changeMonth: true,
-                changeYear: true
+                changeYear: true,
+                maxDate: "-18y"
             }).on('changeDate', function (ev) {
                 $(this).datepicker('hide');
             });
         },
         initializeSelect: function () {
             $('#SpecialistIn').bsMultiSelect({
-                //setSelected: null,
-                //required: true
+                placeholder: 'Select Specialization'
             });
         },
         getCities: function (e) {
@@ -157,11 +275,21 @@
             dropdown.append('<option selected="true" disabled>Select</option>');
             dropdown.prop('selectedIndex', 0);
             $.each(data, function (key, entry) {
-              dropdown.append($('<option></option>').attr('value', entry.city_code).text(entry.city_name));
+                dropdown.append($('<option></option>').attr('value', entry.city_code).text(entry.city_name));
             })
-            
+
+        },
+        validateSpecialization: function (e) {
+            if ($("#SpecialistIn").val() == null)
+                return false;
+            else
+                return true;
+        },
+        displayError: function (error, element) {
+            $(element).html(error);
         }
-    }
+    };
+
 </script>
 
 <style>

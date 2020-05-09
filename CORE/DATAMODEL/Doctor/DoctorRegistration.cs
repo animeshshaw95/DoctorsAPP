@@ -36,7 +36,7 @@ namespace CORE.DATAMODEL.Doctor
         [Required(ErrorMessage = "DOB is required")]
         [DisplayName("Date of Birth")]
         public DateTime DOB { get; set; }
-        [Required(ErrorMessage = "Specialization is required")]
+        [MinLength(1,ErrorMessage = "Specialization is required")]
         [DisplayName("Specialization")]
         public long[] SpecialistIn { get; set; }
         [Required(ErrorMessage = "State is required")]

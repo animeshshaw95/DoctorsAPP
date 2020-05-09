@@ -54,6 +54,7 @@
     <Compile Include="DATAMODEL\Common\State.cs" />
     <Compile Include="DATAMODEL\DoctorModel.cs" />
     <Compile Include="DATAMODEL\Doctor\DoctorRegistration.cs" />
+    <Compile Include="DATAMODEL\Doctor\DoctorRegistrationResponse.cs" />
     <Compile Include="DATAMODEL\Enums\Enums.cs" />
     <Compile Include="DATAMODEL\LoginRequest.cs" />
     <Compile Include="DATAMODEL\NameValue.cs" />

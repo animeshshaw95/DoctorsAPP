@@ -1,4 +1,5 @@
 ﻿using CORE.CODE;
+using CORE.CODE.Registration.Doctor;
 using CORE.DATAMODEL.Doctor;
 using System;
 using System.Collections.Generic;
@@ -12,12 +13,14 @@ namespace DoctorsApp.Controllers
     {
         #region Global Variables
         ICommonServices _commonServices;
+        IDoctorServices _doctorServices;
         #endregion
 
         #region CTOR
-        public RegisterController(ICommonServices commonServices)
+        public RegisterController(ICommonServices commonServices,IDoctorServices doctorServices)
         {
             _commonServices = commonServices;
+            _doctorServices = doctorServices;
         }
         #endregion
 
@@ -34,10 +37,17 @@ namespace DoctorsApp.Controllers
         [HttpPost]
         public ActionResult Index(DoctorRegistration req)
         {
-            req.states = _commonServices.GetStates().ToList();
-            req.specializations = _commonServices.GetSpecializations().ToList();
-            req.cities = req.cities;
-            return View(req);
+            if (!ModelState.IsValid)
+            {
+                req.states = _commonServices.GetStates().ToList();
+                req.specializations = _commonServices.GetSpecializations().ToList();
+                req.cities = _commonServices.GetCities(req.State).ToList();
+                return View(req);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Dashboard",new { });
+            }
         }
 
        

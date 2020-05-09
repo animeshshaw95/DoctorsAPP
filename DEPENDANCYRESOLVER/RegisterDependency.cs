@@ -32,6 +32,8 @@ namespace DEPENDANCYRESOLVER
                      .To<PaymentStrategy>().WithConstructorArgument("payments", kernel.GetAll<IPayment>().ToArray());
             kernel.Bind<IDoctorServices>()
                      .To<DoctorServices>().InSingletonScope();
+            kernel.Bind<ICommonServices>()
+                    .To<CommonServices>().InSingletonScope();
 
         }
     }
